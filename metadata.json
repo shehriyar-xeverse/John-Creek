@@ -1,0 +1,6 @@
+{
+  "name": "John Creek Veterinary Clinic",
+  "description": "A premium light-themed website for Johns Creek Veterinary Clinic featuring comprehensive wellness plans, dental, medical, and surgical care with highly immersive GSAP & Framer Motion interactions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

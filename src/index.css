@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #8B7355;
+  --color-primary-hover: #A68A64;
+  --color-secondary: #A68A64;
+  --color-accent: #C9A66B;
+  --color-ivory: #FAF8F5;
+  --color-cream: #F7F4EF;
+  --color-sand: #E8E1D8;
+  --color-charcoal: #2E2A26;
+  --color-stone: #6F665C;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", SFMono-Regular, monospace;
+
+  /* Custom timing curves */
+  --transition-bezier: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: var(--color-charcoal);
+    background-color: #FFFFFF;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-serif-luxury {
+    font-family: var(--font-serif);
+    color: var(--color-charcoal);
+  }
+
+  /* Smooth select/highlight action */
+  ::selection {
+    background-color: #C9A66B;
+    color: #FFFFFF;
+  }
+}
+
+/* Custom Scroll Progress Bar styling */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background-color: #C9A66B;
+  z-index: 1000;
+  transition: width 0.1s ease-out;
+}
+
+/* Custom Scrollbar for modern touch */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8E1D8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A68A64;
+}
+
+/* Glassmorphism Classes */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(232, 225, 216, 0.5);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.glass-card {
+  background: rgba(247, 244, 239, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(232, 225, 216, 0.6);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom utility class to guarantee 3D perspective feel */
+.perspective-container {
+  perspective: 1000px;
+}
+
+/* Float Animations */
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-float {
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatUp 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Submit active pulse indicator */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(139, 115, 85, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(139, 115, 85, 0);
+  }
+}
+
+.btn-glow-pulse {
+  animation: pulseGlow 2.5s infinite;
+}
+
+.btn-glow-pulse:hover {
+  animation: none;
+}
+
+/* Custom CTA Button Green Glow Pulse */
+@keyframes ctaPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 147, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 147, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 147, 0);
+  }
+}
+
+.cta-pulse-button {
+  animation: ctaPulse 2s infinite;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cta-pulse-button:hover {
+  animation: none !important;
+  box-shadow: 0 0 20px 4px rgba(76, 175, 147, 0.45) !important;
+}
+
+/* Ken Burns slow zoom-in loop over 20s */
+@keyframes kenburns {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite;
+}
+
+/* Scroll indicator soft bounce animation */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-scroll-bounce {
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+/* Animated Underline Slide Micro-interaction */
+.nav-underline-hover {
+  position: relative;
+}
+
+.nav-underline-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background-color: #C9A66B;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-underline-hover:hover::after {
+  transform: scaleX(1);
+}
+
+/* Floating Blob Orbs drift loops */
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -40px) scale(1.1); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(-45px, 30px) scale(0.95); }
+}
+
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(0, 0) scale(0.95); }
+  50% { transform: translate(25px, 35px) scale(1.05); }
+}
+
+.floating-orb-1 {
+  animation: floatOrb1 22s ease-in-out infinite;
+}
+
+.floating-orb-2 {
+  animation: floatOrb2 19s ease-in-out infinite;
+}
+
+.floating-orb-3 {
+  animation: floatOrb3 16s ease-in-out infinite;
+}
+
+/* Slow gradient background shifts between off-white Ivory and a cooler slate tint */
+@keyframes bgShift {
+  0%, 100% { background-color: #FAF8F5; }
+  50% { background-color: #F2F5F3; }
+}
+
+.animate-bg-shift {
+  animation: bgShift 20s ease-in-out infinite;
+}
+
+/* Floating custom dog paw elements */
+@keyframes floatPaw {
+  0% { transform: translateY(110%) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.04; }
+  90% { opacity: 0.04; }
+  100% { transform: translateY(-20%) rotate(360deg); opacity: 0; }
+}
+
+.animate-float-paw {
+  animation: floatPaw 24s linear infinite;
+}
